@@ -64,7 +64,7 @@ module "gke" {
   horizontal_pod_autoscaling = true
   network_policy             = false
   create_service_account     = false
-  service_account            = module.iam.spinnaker_service_account_email
+  service_account            = module.iam.gke_service_account_email
 
   node_pools = [
     {

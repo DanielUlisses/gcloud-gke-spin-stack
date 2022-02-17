@@ -1,6 +1,6 @@
 # gke service account and credentials
 resource "google_service_account" "gke_service_account" {
-  account_id   = "gke"
+  account_id   = "gke-service-account"
   display_name = "gke Service Account"
 }
 
