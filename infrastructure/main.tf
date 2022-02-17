@@ -24,7 +24,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-google-modules/network/google//modules/vpc"
-  version = "~> 2.0.0"
+  version = "~> 4.1.0"
 
   project_id   = var.project_id
   network_name = local.network_name
@@ -34,7 +34,7 @@ module "vpc" {
 
 module "vpc_snet" {
   source  = "terraform-google-modules/network/google//modules/subnets"
-  version = "~> 2.0.0"
+  version = "~> 4.1.0"
 
   project_id   = var.project_id
   network_name = module.vpc.network_name
