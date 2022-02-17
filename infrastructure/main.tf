@@ -130,3 +130,43 @@ module "gke" {
     module.vpc_snet
   ]
 }
+
+module "monitor" {
+  source            = "./modules/monitor"
+  project_id        = var.project_id
+  resource_label    = var.environment
+  gke_cluster_names = [module.gke.name]
+
+  gke_connect_dialer_errors_policy = {
+    threshold_value  = 0.2
+    duration         = 120
+    alignment_period = 60
+  }
+
+  gke_allocatable_cpu_cores_policy = {
+    threshold_value  = 0.5
+    duration         = 120
+    alignment_period = 60
+  }
+
+  gke_allocatable_memory_policy = {
+    threshold_value  = 0.5
+    duration         = 120
+    alignment_period = 60
+  }
+
+  gke_allocatable_storage_policy = {
+    threshold_value  = 24
+    duration         = 120
+    alignment_period = 60
+  }
+}
+
+module "notification_channels" {
+  source = "./modules/monitor/modules/notification_channels"
+
+  project_id     = var.project_id
+  resource_label = var.environment
+
+  notification_email_addresses = ["dsilva@pythian.com"]
+}
