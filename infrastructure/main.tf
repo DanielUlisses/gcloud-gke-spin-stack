@@ -68,6 +68,7 @@ module "gke" {
   service_account            = module.iam.gke_service_account_email
   logging_service            = "logging.googleapis.com/kubernetes"
   monitoring_service         = "monitoring.googleapis.com/kubernetes"
+  default_max_pods_per_node  = 30
 
   node_pools = [
     {
