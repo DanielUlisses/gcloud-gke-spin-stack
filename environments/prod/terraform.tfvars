@@ -1,4 +1,4 @@
-project_id = dasilva-gke-spinn-stack
+project_id = "dasilva-gke-spinn-stack"
 region     = "us-central1"
 subnets = [
   {
