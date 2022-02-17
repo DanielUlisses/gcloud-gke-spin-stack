@@ -65,6 +65,8 @@ module "gke" {
   network_policy             = false
   create_service_account     = false
   service_account            = module.iam.gke_service_account_email
+  logging_service            = "logging.googleapis.com/kubernetes"
+  monitoring_service         = "monitoring.googleapis.com/kubernetes"
 
   node_pools = [
     {
