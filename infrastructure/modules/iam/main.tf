@@ -1,5 +1,3 @@
-provider "local" {}
-
 # spinnaker service account and credentials
 resource "google_service_account" "spinnaker_service_account" {
   account_id   = "spinnaker"

@@ -57,7 +57,7 @@ module "gke" {
   regional                   = false
   zones                      = ["${var.region}-a"]
   network                    = module.vpc.network_name
-  subnetwork                 = gke
+  subnetwork                 = "gke"
   ip_range_pods              = "us-central1-01-gke-01-pods"
   ip_range_services          = "us-central1-01-gke-01-services"
   http_load_balancing        = false
@@ -121,4 +121,8 @@ module "gke" {
   }
 
   node_pools_tags = var.tags
+
+  depends_on = [
+    module.vpc_snet
+  ]
 }

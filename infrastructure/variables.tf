@@ -13,3 +13,7 @@ variable "subnets" {
 variable "tags" {
   type = map(list(string))
 }
+
+variable "environment" {
+  type = string
+}

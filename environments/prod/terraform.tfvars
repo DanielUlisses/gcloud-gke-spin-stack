@@ -1,5 +1,6 @@
-project_id = "dasilva-gke-spinn-stack"
-region     = "us-central1"
+project_id  = "dasilva-gke-spinn-stack"
+environment = "prod"
+region      = "us-central1"
 subnets = [
   {
     subnet_name   = "gke"
