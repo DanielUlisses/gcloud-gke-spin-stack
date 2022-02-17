@@ -6,11 +6,11 @@ This is the repo for the [Managing infrastructure as code with Terraform, Cloud 
 Create the state buckets
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
-gsutil mb gs:/$PROJECT_ID-tfstate
+gsutil mb gs://$PROJECT_ID-tfstate
 ```
 Update the projectID value on the terraform.tfvars and backend.tf files
 ```bash
-cd ~/solutions-terraform-cloudbuild-gitops
+cd ~/repos/gcloud-gke-spin-stack
 sed -i s/PROJECT_ID/$PROJECT_ID/g environments/*/terraform.tfvars
 sed -i s/PROJECT_ID/$PROJECT_ID/g environments/*/backend.tf
 ```
