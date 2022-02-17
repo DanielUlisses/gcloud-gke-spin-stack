@@ -20,4 +20,19 @@ subnets = [
     subnet_region = "us-central1"
     description   = "This subnet to be used by external facing services"
   }
+
 ]
+
+subnets_secondary_ranges = {
+  "gke" = [
+    {
+      ip_cidr_range = "192.168.64.0/24"
+      range_name    = "us-central1-01-gke-01-pods"
+    },
+    {
+      range_name    = "us-central1-01-gke-01-services"
+      ip_cidr_range = "192.168.65.0/24"
+    }
+  ]
+}
+
