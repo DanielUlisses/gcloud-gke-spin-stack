@@ -4,7 +4,7 @@ region      = "us-central1"
 subnets = [
   {
     subnet_name   = "gke"
-    subnet_ip     = "10.20.10.0/24"
+    subnet_ip     = "172.16.16.1/20"
     subnet_region = "us-central1"
     description   = "This subnet to be used by gke resources"
   },
