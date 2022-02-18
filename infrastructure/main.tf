@@ -23,22 +23,12 @@ locals {
 }
 
 module "vpc" {
-  source  = "terraform-google-modules/network/google//modules/vpc"
+  source  = "terraform-google-modules/network/google/"
   version = "~> 4.1.0"
 
-  project_id   = var.project_id
-  network_name = local.network_name
-
-  shared_vpc_host = false
-}
-
-module "vpc_snet" {
-  source  = "terraform-google-modules/network/google//modules/subnets"
-  version = "~> 4.1.0"
-
-  project_id   = var.project_id
-  network_name = module.vpc.network_name
-
+  project_id       = var.project_id
+  network_name     = local.network_name
+  routing_mode     = "GLOBAL"
   subnets          = var.subnets
   secondary_ranges = var.subnets_secondary_ranges
 
@@ -132,10 +122,11 @@ module "gke" {
 }
 
 module "monitor" {
-  source            = "./modules/monitor"
-  project_id        = var.project_id
-  resource_label    = var.environment
-  gke_cluster_names = [module.gke.name]
+  source                            = "./modules/monitor"
+  project_id                        = var.project_id
+  resource_label                    = var.environment
+  gke_cluster_names                 = [module.gke.name]
+  stackdriver_notification_channels = module.notification_channels.notification_channel_ids
 
   gke_connect_dialer_errors_policy = {
     threshold_value  = 0.2
